@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import { DefaultTheme } from 'styled-components'
-import Theme from '../../styles/Theme'
-import { defaultTheme } from '../../styles/Theme/defaultTheme'
+import Theme from '~/styles/Theme'
+import { defaultTheme } from '~/styles/Theme/defaultTheme'
 
 type IAppValue = {
   theme: DefaultTheme
