@@ -1,0 +1,13 @@
+import { createGlobalStyle } from 'styled-components'
+
+export default createGlobalStyle`
+   html,
+  body{
+    margin: 0;
+    padding: 0;
+  }
+
+  html, * {
+    font-family: ${({ theme }) => theme.font};
+  }
+`
