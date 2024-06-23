@@ -1,5 +1,7 @@
-import React, { useMemo, useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import React, { useEffect, useMemo, useState } from 'react'
 import { DefaultTheme } from 'styled-components'
+import { getCompany } from '~/services/company'
 import Theme from '~/styles/Theme'
 import { defaultTheme } from '~/styles/Theme/defaultTheme'
 
@@ -17,12 +19,17 @@ type IAppProvider = {
 
 const AppProvider: React.FC<IAppProvider> = ({ children }) => {
   const [theme, setTheme] = useState<DefaultTheme>(defaultTheme)
+  const { isPending, error, data } = useQuery({
+    queryKey: ['getCompany'],
+    queryFn: getCompany
+  })
 
   const valueContext = useMemo<IAppValue>(
     () => ({ theme, setTheme }),
     [theme, setTheme]
   )
 
+  console.log(data)
   return (
     <AppContext.Provider value={valueContext}>
       <Theme theme={theme}>{children}</Theme>

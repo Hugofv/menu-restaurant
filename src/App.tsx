@@ -1,6 +1,8 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import Theme from './styles/Theme'
 import { useMemo } from 'react'
+import { QueryClientProvider } from '@tanstack/react-query'
+import AppProvider from './providers/AppProvider'
+import { queryClient } from './lib'
 
 const App = () => {
   const routesMemo = useMemo(() => {
@@ -14,9 +16,11 @@ const App = () => {
   }, [])
 
   return (
-    <Theme>
-      <RouterProvider router={routesMemo} />
-    </Theme>
+    <QueryClientProvider client={queryClient}>
+      <AppProvider>
+        <RouterProvider router={routesMemo} />
+      </AppProvider>
+    </QueryClientProvider>
   )
 }
 
