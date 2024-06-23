@@ -1,16 +1,19 @@
-import { useQuery } from '@tanstack/react-query'
 import React, { useEffect, useMemo, useState } from 'react'
 import { DefaultTheme } from 'styled-components'
-import { getCompany } from '~/services/company'
 import Theme from '~/styles/Theme'
 import { defaultTheme } from '~/styles/Theme/defaultTheme'
+import companyMock from '~/mocks/company.json'
+import { CompanyModel } from '~/models/company'
+import useRouterConfig from '~/hooks/useRouterConfig'
 
 type IAppValue = {
   theme: DefaultTheme
+  company: CompanyModel
 }
 
 export const AppContext = React.createContext<IAppValue>({
-  theme: defaultTheme
+  theme: defaultTheme,
+  company: companyMock
 })
 
 type IAppProvider = {
@@ -19,17 +22,31 @@ type IAppProvider = {
 
 const AppProvider: React.FC<IAppProvider> = ({ children }) => {
   const [theme, setTheme] = useState<DefaultTheme>(defaultTheme)
-  const { isPending, error, data } = useQuery({
-    queryKey: ['getCompany'],
-    queryFn: getCompany
-  })
+  const [company] = useState<CompanyModel>(companyMock as CompanyModel)
+
+  useEffect(() => {
+    initCompanyTheme()
+  }, [])
+
+  const initCompanyTheme = () => {
+    const companyTheme: DefaultTheme = {
+      ...defaultTheme,
+      color: {
+        primary: companyMock.webSettings.primaryColour,
+        navBackground: companyMock.webSettings.navBackgroundColour,
+        background: companyMock.webSettings.backgroundColour,
+        primaryHover: companyMock.webSettings.primaryColourHover
+      }
+    }
+
+    setTheme(companyTheme)
+  }
 
   const valueContext = useMemo<IAppValue>(
-    () => ({ theme, setTheme }),
-    [theme, setTheme]
+    () => ({ theme, company, setTheme }),
+    [theme, company, setTheme]
   )
 
-  console.log(data)
   return (
     <AppContext.Provider value={valueContext}>
       <Theme theme={theme}>{children}</Theme>

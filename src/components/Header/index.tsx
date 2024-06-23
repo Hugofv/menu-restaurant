@@ -1,7 +1,17 @@
-import React from 'react';
+import React from 'react'
+import { useAppProvider } from '~/hooks/useAppProvider'
+import { Container } from './styles'
+import NavBar from './NavBar'
 
 const Header: React.FC = () => {
-  return <div />;
+  const { company } = useAppProvider()
+
+  return (
+    <>
+      <NavBar />
+      <Container image={company?.webSettings?.bannerImage || ''} />
+    </>
+  )
 }
 
-export default Header;
+export default Header
