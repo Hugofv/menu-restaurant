@@ -1,3 +1,5 @@
 export default {
-  menu: 'Menu'
+  menu: 'Menu',
+  signin: 'signin',
+  contact: 'Contact'
 }

@@ -1,5 +1,5 @@
 import React, { ReactNode, useMemo } from 'react'
-import Home from '~/templates/Home'
+import Menu from '~/templates/Menu'
 import { useTranslation } from 'react-i18next'
 
 type Route = {
@@ -32,10 +32,22 @@ const RouteProvider: React.FC<IRouteProvider> = ({ children }) => {
   const routes = useMemo<Route[]>(() => {
     return [
       {
-        element: <Home />,
+        element: <Menu />,
         errorElement: null,
         path: '/',
         title: t('common.menu')
+      },
+      {
+        element: null,
+        errorElement: null,
+        path: '/signin',
+        title: t('common.signin')
+      },
+      {
+        element: null,
+        errorElement: null,
+        path: '/contact',
+        title: t('common.contact')
       }
     ]
   }, [t])

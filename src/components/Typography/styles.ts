@@ -50,3 +50,5 @@ export const StyledTypography = styled(
   color: ${({ theme, color }) => theme.textColor[color || 'primary']};
   margin: 0;
 `
+
+

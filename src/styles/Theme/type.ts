@@ -3,6 +3,7 @@ export interface ThemeColors {
   navBackground: string
   primaryHover: string
   background: string
+  light: string
 }
 
 export interface TextColors {
