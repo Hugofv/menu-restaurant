@@ -1,19 +1,17 @@
-import { ReactNode, CSSProperties } from 'react'
+import { CSSProperties } from 'react'
 import { StyledTypography } from './styles'
-import { ComponentVariant, TypographyVariant, VariantMapping } from './type'
-
-type TypographyProps = {
-  variant?: TypographyVariant
-  children: ReactNode
-}
+import { ComponentVariant, TypographyProps, VariantMapping } from './type'
 
 const Typography = ({
   variant = 'p',
+  color = 'primary',
   children,
   ...props
 }: TypographyProps & CSSProperties) => (
   <StyledTypography
-    variant={VariantMapping[variant] as ComponentVariant}
+    as={VariantMapping[variant] as ComponentVariant}
+    variant={variant}
+    color={color}
     style={{ ...props }}
   >
     {children}

@@ -11,10 +11,14 @@ type Route = {
 
 type IRouteValue = {
   routes: Route[]
+  current: Route | undefined | null
+  findRoute: (_routes: Route[], path: string) => Route | undefined | null
 }
 
 export const RouteContext = React.createContext<IRouteValue>({
-  routes: []
+  routes: [],
+  current: null,
+  findRoute: () => null
 })
 
 type IRouteProvider = {
@@ -23,6 +27,7 @@ type IRouteProvider = {
 
 const RouteProvider: React.FC<IRouteProvider> = ({ children }) => {
   const { t } = useTranslation()
+  const pathname = window.location.pathname
 
   const routes = useMemo<Route[]>(() => {
     return [
@@ -35,11 +40,16 @@ const RouteProvider: React.FC<IRouteProvider> = ({ children }) => {
     ]
   }, [t])
 
+  const findRoute = (_routes: Route[], path: string) =>
+    _routes.find((route) => route.path === path)
+
   const valueContext = useMemo<IRouteValue>(
     () => ({
-      routes
+      routes,
+      current: findRoute(routes, pathname),
+      findRoute
     }),
-    [routes]
+    [pathname, routes]
   )
 
   return (

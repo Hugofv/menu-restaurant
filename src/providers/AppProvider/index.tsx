@@ -4,7 +4,7 @@ import Theme from '~/styles/Theme'
 import { defaultTheme } from '~/styles/Theme/defaultTheme'
 import companyMock from '~/mocks/company.json'
 import { CompanyModel } from '~/models/company'
-import useRouterConfig from '~/hooks/useRouterConfig'
+import { useRouteProvider } from '~/hooks/useRouteProvider'
 
 type IAppValue = {
   theme: DefaultTheme
@@ -23,6 +23,8 @@ type IAppProvider = {
 const AppProvider: React.FC<IAppProvider> = ({ children }) => {
   const [theme, setTheme] = useState<DefaultTheme>(defaultTheme)
   const [company] = useState<CompanyModel>(companyMock as CompanyModel)
+  const { current } = useRouteProvider()
+  document.title = `Restaurant - ${current?.title || 'Restaurant'}`
 
   useEffect(() => {
     initCompanyTheme()
@@ -32,6 +34,7 @@ const AppProvider: React.FC<IAppProvider> = ({ children }) => {
     const companyTheme: DefaultTheme = {
       ...defaultTheme,
       color: {
+        ...defaultTheme.color,
         primary: companyMock.webSettings.primaryColour,
         navBackground: companyMock.webSettings.navBackgroundColour,
         background: companyMock.webSettings.backgroundColour,

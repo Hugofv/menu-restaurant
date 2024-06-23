@@ -3,14 +3,14 @@ import { DefaultTheme } from 'styled-components'
 export const defaultTheme: DefaultTheme = {
   color: {
     primary: '#FFFDF9',
-    secondary: '#06B49A',
+    navBackground: '#FFFDF9',
     primaryHover: '#FFFDF9',
-    background: '#EEEEEE'
+    background: '#EEEEEE',
   },
-  font: 'Roboto',
-  fontSizes: {
-    small: '1em',
-    medium: '2em',
-    large: '3em'
-  }
+  textColor: {
+    primary: '#121212',
+    secondary: '#464646',
+    light: '#FFFFFF'
+  },
+  font: 'Roboto'
 }

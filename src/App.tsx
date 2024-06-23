@@ -9,7 +9,7 @@ const App = () => {
 
   const routesMemo = useMemo(() => {
     return createBrowserRouter(routes)
-  }, [routes])
+  }, [])
 
   return (
     <AppProvider>

@@ -1,15 +1,52 @@
-import { ReactNode, createElement } from 'react'
+import { createElement } from 'react'
 
-import styled, { CSSProperties } from 'styled-components'
-import { ComponentVariant } from './type'
+import styled from 'styled-components'
+import { IStyledTypography } from './type'
 
-interface IStyledTypography {
-  variant: ComponentVariant
-  children: ReactNode
-  style: CSSProperties
+const styleMapping = {
+  h1: `
+    font-size: 20px;
+    font-weight: 600;
+  `,
+  h2: `
+    font-size: 19px;
+    font-weight: 600;
+  `,
+  h3: `
+    font-size: 18px;
+    font-weight: 500;
+  `,
+  h4: `
+    font-size: 17px;
+    font-weight: 500;
+  `,
+  h5: `
+    font-size: 16px;
+    font-weight: 400;
+  `,
+  h6: `
+    font-size: 15px;
+    font-weight: 300;
+  `,
+  p: `
+    font-size: .9rem
+  `,
+  span: `
+    font-size: .7rem
+  `,
+  body1: `
+    font-size: 1rem
+  `,
+  body2: `
+    font-size: rem
+  `
 }
 
 export const StyledTypography = styled(
-  ({ variant, children, ...props }: IStyledTypography) =>
-    createElement(variant, props, children)
-)``
+  ({ as, children, ...props }: IStyledTypography) =>
+    createElement(as, props, children)
+)`
+  ${({ variant }) => styleMapping[variant]};
+  color: ${({ theme, color }) => theme.textColor[color || 'primary']};
+  margin: 0;
+`

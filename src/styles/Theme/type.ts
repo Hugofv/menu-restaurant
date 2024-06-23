@@ -5,9 +5,16 @@ export interface ThemeColors {
   background: string
 }
 
+export interface TextColors {
+  primary: string
+  secondary: string
+  light: string
+}
+
 declare module 'styled-components' {
   export interface DefaultTheme {
     color: ThemeColors
+    textColor: TextColors
     font: string
   }
 }
