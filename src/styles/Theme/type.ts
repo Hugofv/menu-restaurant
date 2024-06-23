@@ -4,6 +4,7 @@ export interface ThemeColors {
   primaryHover: string
   background: string
   light: string
+  border: string
 }
 
 export interface TextColors {
