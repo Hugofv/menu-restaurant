@@ -6,6 +6,7 @@ import Input from '~/components/Input'
 import {
   Container,
   WrapperCarousel,
+  WrapperInfo,
   WrapperProducts,
   WrapperSection
 } from './styles'
@@ -13,6 +14,7 @@ import CarouselSection from '~/components/CarouselSection'
 import { useMenuProvider } from '~/templates/Menu/hooks/useMenuProvider'
 import Collapse from '~/components/Collapse'
 import ListItemProduct from '~/components/ListItemProduct'
+import Typography from '~/components/Typography'
 
 const InitialPage: React.FC = () => {
   const { t } = useTranslation()
@@ -52,6 +54,12 @@ const InitialPage: React.FC = () => {
           ))}
         </WrapperSection>
       </Container>
+
+      <WrapperInfo>
+        <Typography variant='link' color='main' textAlign='center'>
+          {t('menu.viewAllergyInformation')}
+        </Typography>
+      </WrapperInfo>
     </>
   )
 }

@@ -7,9 +7,11 @@ export const defaultTheme: DefaultTheme = {
     primaryHover: '#FFFDF9',
     background: '#EEEEEE',
     light: '#FFFFFF',
-    border: '#8A94A4'
+    border: '#8A94A4',
+    backgroundPage: '#F8F9FA'
   },
   textColor: {
+    main: '#4F372F',
     primary: '#121212',
     secondary: '#464646',
     light: '#FFFFFF'

@@ -1,5 +1,5 @@
-import { ReactNode } from "react"
-import { TextColors } from "~/styles/Theme/type"
+import { ReactNode } from 'react'
+import { TextColors } from '~/styles/Theme/type'
 
 export type TypographyVariant =
   | 'h1'
@@ -12,6 +12,7 @@ export type TypographyVariant =
   | 'span'
   | 'body1'
   | 'body2'
+  | 'link'
 
 export type ComponentVariant =
   | 'h1'
@@ -22,6 +23,7 @@ export type ComponentVariant =
   | 'h6'
   | 'p'
   | 'span'
+  | 'a'
 
 export const VariantMapping = {
   h1: 'h1',
@@ -33,7 +35,8 @@ export const VariantMapping = {
   p: 'p',
   span: 'span',
   body1: 'span',
-  body2: 'span'
+  body2: 'span',
+  link: 'a'
 }
 
 export interface IStyledTypography extends TypographyProps {

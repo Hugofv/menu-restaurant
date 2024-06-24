@@ -21,7 +21,7 @@ const Item: React.FC<IItemProps> = ({ active, section, onChangeSection }) => {
         positionSection &&
         containerRect &&
         positionSection.top >= containerRect.top &&
-        positionSection.bottom <= containerRect.bottom
+        positionSection.bottom <= containerRect.bottom + 100
       ) {
         onChangeSection?.(section)
         return

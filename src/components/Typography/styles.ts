@@ -41,6 +41,11 @@ const styleMapping = {
   body2: `
     font-size: 16px;
     font-weight: 300;
+  `,
+  link: `
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: underline;
   `
 }
 
@@ -52,5 +57,3 @@ export const StyledTypography = styled(
   color: ${({ theme, color }) => theme.textColor[color || 'primary']};
   margin: 0;
 `
-
-
