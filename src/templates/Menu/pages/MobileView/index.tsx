@@ -8,6 +8,7 @@ export const MobileViewContext = createContext({})
 
 const MobileView: React.FC = () => {
   const [step, setStep] = useState(STEP_MOBILE_VIEW.INITIAL)
+  
 
   const valueContext = useMemo(
     () => ({

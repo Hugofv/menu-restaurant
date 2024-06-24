@@ -6,3 +6,9 @@ export const Container = styled.main`
   gap: 0.5rem;
   padding: 1rem;
 `
+
+export const WrapperProducts = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`

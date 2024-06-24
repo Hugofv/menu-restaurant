@@ -5,8 +5,8 @@ import { IStyledTypography } from './type'
 
 const styleMapping = {
   h1: `
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 500;
   `,
   h2: `
     font-size: 19px;
@@ -39,7 +39,8 @@ const styleMapping = {
     font-weight: 600;
   `,
   body2: `
-    font-size: rem
+    font-size: 16px;
+    font-weight: 300;
   `
 }
 
