@@ -22,7 +22,7 @@ const Collapse: React.FC<ICollapseProps> = ({
     const childHeightRaw = contentRef.current?.clientHeight
 
     setContentHeight(`${childHeightRaw || 0}rem`)
-  }, [])
+  }, [open])
 
   const handleToggleOpen = () => {
     setOpen(!open)

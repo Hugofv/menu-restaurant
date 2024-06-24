@@ -1,5 +1,5 @@
 import React from 'react'
-import { Wrapper, WrapperInfo } from './style'
+import { Wrapper, WrapperDescription, WrapperImage, WrapperInfo } from './style'
 import Typography from '../Typography'
 import { Product } from '~/models/menu'
 
@@ -12,11 +12,18 @@ const ListItemProduct: React.FC<IListItemProductProps> = ({ product }) => {
     <Wrapper>
       <WrapperInfo>
         <Typography variant='body1'>{product.name}</Typography>
-        <Typography variant='body2'>{product.description}</Typography>
+        <WrapperDescription>
+          <Typography variant='body2'>{product.description}</Typography>
+        </WrapperDescription>
         <Typography variant='body1' color='secondary'>
           {product.price}
         </Typography>
       </WrapperInfo>
+      {product.images?.[0]?.image && (
+        <WrapperImage>
+          <img src={product.images?.[0]?.image} />
+        </WrapperImage>
+      )}
     </Wrapper>
   )
 }
