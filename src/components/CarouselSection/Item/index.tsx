@@ -17,8 +17,10 @@ const Item: React.FC<IItemProps> = ({ active, section, onChangeSection }) => {
 
       if (
         positionSection &&
-        positionSection.top < window.innerHeight &&
-        positionSection.bottom >= 0
+        sectionElement &&
+        positionSection.top >= 0 &&
+        positionSection.bottom <=
+          (window.innerHeight || document.documentElement.clientHeight)
       ) {
         onChangeSection?.(section)
         return

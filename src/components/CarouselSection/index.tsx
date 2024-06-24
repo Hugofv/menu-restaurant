@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Container } from './styles'
 import Item from './Item'
 import { Section } from '~/models/menu'
@@ -14,8 +14,11 @@ const CarouselSection: React.FC<ICarouselSectionProps> = ({
   selected,
   onChangeSection
 }) => {
+  const currentSectionRef = useRef(selected)
+
   const handleChangeSection = (section: Section) => {
-    if (selected?.id !== section.id) {
+    if (currentSectionRef.current?.id !== section.id) {
+      currentSectionRef.current = section
       onChangeSection?.(section)
     }
   }
