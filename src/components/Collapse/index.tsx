@@ -29,7 +29,7 @@ const Collapse: React.FC<ICollapseProps> = ({
   }
 
   return (
-    <Wrapper>
+    <Wrapper id={title}>
       <Header>
         <Typography variant='h1'>{title}</Typography>
         <WrapperIcon onClick={handleToggleOpen}>

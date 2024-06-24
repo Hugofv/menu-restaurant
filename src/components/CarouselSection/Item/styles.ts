@@ -42,3 +42,7 @@ export const Avatar = styled.div<IAvatarProps>`
   `
       : ''};
 `
+
+export const AnchorSection = styled.a`
+  text-decoration: none;
+`

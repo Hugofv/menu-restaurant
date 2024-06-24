@@ -11,10 +11,9 @@ import ListItemProduct from '~/components/ListItemProduct'
 
 const InitialPage: React.FC = () => {
   const { t } = useTranslation()
-  const { state } = useMenuProvider()
-  const {
-    menu: { sections }
-  } = state
+  const { menu, currentSection, setCurrentSection } = useMenuProvider()
+  const { sections } = menu
+
   return (
     <>
       <Header />
@@ -25,9 +24,13 @@ const InitialPage: React.FC = () => {
           placeholder={t('menu.searchMenuItems')}
         />
 
-        <CarouselSection sections={sections} />
+        <CarouselSection
+          sections={sections}
+          selected={currentSection}
+          onChangeSection={setCurrentSection}
+        />
 
-        <WrapperSection>
+        <WrapperSection id='WrapperSection'>
           {sections?.map((sec) => (
             <Collapse title={sec.name}>
               <WrapperProducts>
