@@ -3,9 +3,10 @@ import { ThemeColors } from '~/styles/Theme/type'
 
 export interface IButton {
   children: ReactNode
+  onClick: () => void
   color?: keyof ThemeColors
 }
 
-export interface IStyledButton extends IButton {
-   
+export interface IStyledButton {
+  color?: keyof ThemeColors
 }

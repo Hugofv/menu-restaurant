@@ -11,6 +11,7 @@ export interface Section {
 export interface Product {
   id: number
   name: string
+  quantity?: number
   description?: string
   alcoholic: number
   price: number
@@ -21,6 +22,7 @@ export interface Product {
   images?: Image[]
   available: boolean
   modifiers?: Modifier[]
+  modifiersSelected?: ModifierOption[]
 }
 
 export interface Modifier {
@@ -31,7 +33,7 @@ export interface Modifier {
   items: ModifierOption[]
 }
 
-interface ModifierOption {
+export interface ModifierOption {
   id: number
   name: string
   price: number

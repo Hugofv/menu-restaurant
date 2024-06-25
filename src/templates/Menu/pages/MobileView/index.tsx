@@ -5,6 +5,7 @@ import { STEP_MOBILE_VIEW } from './constants'
 import InitialPage from './InitialPage'
 import { Product } from '~/models/menu'
 import ProductDetail from '~/components/ProductDetail'
+import { useMenuProvider } from '../../hooks/useMenuProvider'
 
 interface IMobileViewContext {
   step: number
@@ -25,10 +26,18 @@ export const MobileViewContext = createContext<IMobileViewContext>({
 const MobileView: React.FC = () => {
   const [step, setStep] = useState(STEP_MOBILE_VIEW.INITIAL)
   const [productSelected, setProductSelected] = useState<Product | null>()
+  const { basket, setBasket } = useMenuProvider()
 
   const handleCloseProductDetail = () => {
     setProductSelected(null)
     setStep(STEP_MOBILE_VIEW.INITIAL)
+  }
+
+  const handleAddProduct = (product: Product) => {
+    const newBasket = JSON.parse(JSON.stringify(basket))
+    newBasket.push(product)
+    setBasket(newBasket)
+    handleCloseProductDetail()
   }
 
   const valueContext = useMemo(
@@ -50,6 +59,7 @@ const MobileView: React.FC = () => {
           <ProductDetail
             product={productSelected}
             onClose={handleCloseProductDetail}
+            onAddProduct={handleAddProduct}
           />
         </StepWizard>
       </WrapperStepWizard>

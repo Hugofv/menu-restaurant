@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ChangeEvent, useMemo, useState } from 'react'
 import {
   Container,
   WrapperAction,
@@ -10,7 +10,7 @@ import {
   WrapperOption
 } from './styles'
 import Typography from '~/components/Typography'
-import { Product } from '~/models/menu'
+import { ModifierOption, Product } from '~/models/menu'
 import { useTranslation } from 'react-i18next'
 import ListItemOption from '../ListItemOption'
 import formatMoney from '~/utils/formatMoney'
@@ -21,10 +21,59 @@ import Button from '../Button'
 interface IProductDetail {
   product: Product | null | undefined
   onClose: () => void
+  onAddProduct: (product: Product) => void
 }
 
-const ProductDetail: React.FC<IProductDetail> = ({ product, onClose }) => {
+const ProductDetail: React.FC<IProductDetail> = ({
+  product,
+  onClose,
+  onAddProduct
+}) => {
+  const [modifiersSelected, setModifiersSelected] = useState<ModifierOption[]>(
+    []
+  )
+  const [quantity, setQuantity] = useState(1)
   const { t } = useTranslation()
+
+  const checkIsSelected = (option: ModifierOption): boolean => {
+    const item = modifiersSelected.find((modifier) => modifier.id === option.id)
+    return !!item
+  }
+
+  const handleChangeModifier = (
+    event: ChangeEvent<HTMLInputElement>,
+    option: ModifierOption
+  ) => {
+    if (event.target.checked) {
+      const newModifiers = JSON.parse(JSON.stringify(modifiersSelected))
+      if (modifiersSelected.length < option.maxChoices) {
+        newModifiers.push(option)
+      } else {
+        newModifiers.pop()
+        newModifiers.push(option)
+      }
+
+      setModifiersSelected(newModifiers)
+    } else {
+      const newModifiers = modifiersSelected.filter(
+        (modifier) => modifier.id !== option.id
+      )
+      setModifiersSelected(newModifiers)
+    }
+  }
+
+  const handleAddOnBasket = () => {
+    onAddProduct({ ...product, quantity, modifiersSelected } as Product)
+  }
+
+  const totalAmount = useMemo(() => {
+    const price = modifiersSelected.reduce(
+      (acc, modifier) => (acc += modifier.price),
+      product?.price || 0
+    )
+
+    return price * quantity
+  }, [modifiersSelected, product?.price, quantity])
 
   return (
     <Container>
@@ -60,6 +109,8 @@ const ProductDetail: React.FC<IProductDetail> = ({ product, onClose }) => {
                 <ListItemOption
                   primary={item.name}
                   secondary={formatMoney(item.price)}
+                  checked={checkIsSelected(item)}
+                  onChange={(event) => handleChangeModifier(event, item)}
                 />
               ))}
             </WrapperOption>
@@ -68,9 +119,9 @@ const ProductDetail: React.FC<IProductDetail> = ({ product, onClose }) => {
       </WrapperBody>
 
       <WrapperAction>
-        <Counter />
-        <Button>
-          {t('menu.addToOrder')} - {formatMoney(product?.price || 0)}
+        <Counter value={quantity} setValue={setQuantity} />
+        <Button onClick={handleAddOnBasket}>
+          {t('menu.addToOrder')} - {formatMoney(totalAmount)}
         </Button>
       </WrapperAction>
     </Container>

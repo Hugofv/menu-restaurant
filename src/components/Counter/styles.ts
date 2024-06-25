@@ -14,6 +14,7 @@ interface IRoundedButton {
 export const RoundedButton = styled.button<IRoundedButton>`
   background-color: ${({ theme, disabled, color }) =>
     disabled ? theme.color.secondary : theme.color?.[color || 'primary']};
+  cursor: pointer;
   border: none;
   outline: none;
   width: ${({ size }) => size || '2rem'};

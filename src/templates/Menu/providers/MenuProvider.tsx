@@ -8,7 +8,7 @@ import {
 } from 'react'
 import { useDebounce } from '~/hooks/useDebounce'
 import menuMock from '~/mocks/menu.json'
-import { MenuModel, Section } from '~/models/menu'
+import { MenuModel, Product, Section } from '~/models/menu'
 
 type IMenuContext = {
   menu: MenuModel
@@ -17,6 +17,8 @@ type IMenuContext = {
   setQuery: Dispatch<SetStateAction<string>>
   currentSection: Section
   setCurrentSection: Dispatch<SetStateAction<Section>>
+  basket: Product[]
+  setBasket: Dispatch<SetStateAction<Product[]>>
 }
 
 export const MenuContext = createContext<IMenuContext>({
@@ -25,7 +27,9 @@ export const MenuContext = createContext<IMenuContext>({
   currentSection: menuMock.sections[0],
   setCurrentSection: () => null,
   query: '',
-  setQuery: () => null
+  setQuery: () => null,
+  basket: [],
+  setBasket: () => null
 })
 
 interface MenuProviderProps {
@@ -37,6 +41,7 @@ export const MenuProvider = ({ children }: MenuProviderProps) => {
   const [currentSection, setCurrentSection] = useState<Section>(
     menuMock.sections[0]
   )
+  const [basket, setBasket] = useState<Product[]>([])
 
   const searchQuery = useDebounce(query, 300)
 
@@ -61,13 +66,15 @@ export const MenuProvider = ({ children }: MenuProviderProps) => {
   const valueContext = useMemo(
     () => ({
       query,
+      basket,
+      setBasket,
       setQuery,
       menu: menuMock,
       menuFiltered,
       currentSection: currentSection,
       setCurrentSection: setCurrentSection
     }),
-    [currentSection, menuFiltered, query]
+    [basket, currentSection, menuFiltered, query]
   )
 
   return (
