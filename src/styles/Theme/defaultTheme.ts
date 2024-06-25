@@ -3,12 +3,13 @@ import { DefaultTheme } from 'styled-components'
 export const defaultTheme: DefaultTheme = {
   color: {
     primary: '#FFFDF9',
+    secondary: '#DADADA',
     navBackground: '#FFFDF9',
     primaryHover: '#FFFDF9',
     background: '#EEEEEE',
     light: '#FFFFFF',
     border: '#8A94A4',
-    backgroundPage: '#F8F9FA'
+    backgroundPage: '#F8F9FA',
   },
   textColor: {
     main: '#4F372F',

@@ -1,4 +1,5 @@
 export default {
-  searchMenuItems: 'Search Menu Items',
+  searchMenuItems: 'Search menu items',
   viewAllergyInformation: 'View allergy Information',
+  addToOrder: 'Add to Order',
 }

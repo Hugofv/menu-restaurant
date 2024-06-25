@@ -26,6 +26,11 @@ const MobileView: React.FC = () => {
   const [step, setStep] = useState(STEP_MOBILE_VIEW.INITIAL)
   const [productSelected, setProductSelected] = useState<Product | null>()
 
+  const handleCloseProductDetail = () => {
+    setProductSelected(null)
+    setStep(STEP_MOBILE_VIEW.INITIAL)
+  }
+
   const valueContext = useMemo(
     () => ({
       step,
@@ -42,7 +47,10 @@ const MobileView: React.FC = () => {
           <InitialPage />
         </StepWizard>
         <StepWizard>
-          <ProductDetail product={productSelected} />
+          <ProductDetail
+            product={productSelected}
+            onClose={handleCloseProductDetail}
+          />
         </StepWizard>
       </WrapperStepWizard>
     </MobileViewContext.Provider>

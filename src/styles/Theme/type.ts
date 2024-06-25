@@ -1,5 +1,6 @@
 export interface ThemeColors {
   primary: string
+  secondary: string
   navBackground: string
   primaryHover: string
   background: string
