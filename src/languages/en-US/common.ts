@@ -1,5 +1,7 @@
 export default {
   menu: 'Menu',
   signin: 'signin',
-  contact: 'Contact'
+  contact: 'Contact',
+  select: 'Select',
+  option: 'Option'
 }

@@ -15,12 +15,21 @@ import { useMenuProvider } from '~/templates/Menu/hooks/useMenuProvider'
 import Collapse from '~/components/Collapse'
 import ListItemProduct from '~/components/ListItemProduct'
 import Typography from '~/components/Typography'
+import { useMobileViewContext } from '../hooks/useMobileViewContext'
+import { Product } from '~/models/menu'
+import { STEP_MOBILE_VIEW } from '../constants'
 
 const InitialPage: React.FC = () => {
   const { t } = useTranslation()
   const { menuFiltered, query, setQuery, currentSection, setCurrentSection } =
     useMenuProvider()
+  const { setProductSelected, setStep } = useMobileViewContext()
   const { sections } = menuFiltered
+
+  const handleDetailProduct = (product: Product) => {
+    setProductSelected(product)
+    setStep(STEP_MOBILE_VIEW.PRODUCT_DETAIL)
+  }
 
   return (
     <>
@@ -47,7 +56,11 @@ const InitialPage: React.FC = () => {
             <Collapse title={sec.name}>
               <WrapperProducts>
                 {sec.items?.map((it) => (
-                  <ListItemProduct key={it.id} product={it} />
+                  <ListItemProduct
+                    onSelectProduct={() => handleDetailProduct(it)}
+                    key={it.id}
+                    product={it}
+                  />
                 ))}
               </WrapperProducts>
             </Collapse>
