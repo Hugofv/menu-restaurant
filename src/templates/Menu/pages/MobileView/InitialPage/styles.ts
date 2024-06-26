@@ -25,18 +25,6 @@ export const WrapperCarousel = styled.div<IWrapperCarousel>`
       : 'margin-top: 2rem;'};
 `
 
-export const WrapperSection = styled.div`
-  overflow: auto;
-  margin-top: 2rem;
-`
-
-export const WrapperProducts = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding-bottom: 2rem;
-`
-
 export const WrapperInfo = styled.div`
   padding: 1.3rem 0;
   width: 100%;

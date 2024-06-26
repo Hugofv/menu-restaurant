@@ -4,6 +4,7 @@ export interface ThemeColors {
   navBackground: string
   primaryHover: string
   background: string
+  backgroundBase: string
   backgroundPage: string
   light: string
   border: string

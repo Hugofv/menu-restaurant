@@ -7,6 +7,7 @@ export const defaultTheme: DefaultTheme = {
     navBackground: '#FFFDF9',
     primaryHover: '#FFFDF9',
     background: '#EEEEEE',
+    backgroundBase: '#EEEEEE',
     light: '#FFFFFF',
     border: '#8A94A4',
     backgroundPage: '#F8F9FA',
