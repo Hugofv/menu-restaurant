@@ -3,7 +3,6 @@ import { ThemeColors } from '~/styles/Theme/type'
 
 export const Wrapper = styled.div`
   display: flex;
-  gap: 1rem;
 `
 
 interface IRoundedButton {

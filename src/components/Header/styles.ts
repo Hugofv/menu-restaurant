@@ -4,7 +4,7 @@ interface IContainerProps {
   image: string
 }
 
-export const Container = styled.div<IContainerProps>`
+export const Container = styled.header<IContainerProps>`
   background-image: ${({ image }) => `url(${image})`};
   background-repeat: no-repeat;
   background-position: center center;

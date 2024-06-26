@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FiSearch } from 'react-icons/fi'
 import Header from '~/components/Header'
@@ -56,6 +56,15 @@ const InitialPage: React.FC = () => {
     setStep(STEP_MOBILE_VIEW.PRODUCT_DETAIL)
   }
 
+  const handleOpenBasket = () => {
+    setStep(STEP_MOBILE_VIEW.BASKET)
+  }
+
+  const quantityItemsProduct = useMemo(() => {
+    const items = [...basket.values()]
+    return items.reduce((acc, item) => (acc += item.quantity || 0), 0)
+  }, [basket])
+
   return (
     <>
       <Header />
@@ -100,12 +109,12 @@ const InitialPage: React.FC = () => {
         </Typography>
       </WrapperInfo>
 
-      {basket.size && (
+      {quantityItemsProduct && (
         <WrapperBasketButton>
-          <Button>
+          <Button onClick={handleOpenBasket}>
             {t('menu.yourBasket')}
             {' • '}
-            {basket.size} {t('menu.item').toLowerCase()}
+            {quantityItemsProduct} {t('menu.item').toLowerCase()}
           </Button>
         </WrapperBasketButton>
       )}

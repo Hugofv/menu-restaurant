@@ -6,6 +6,7 @@ import InitialPage from './InitialPage'
 import { Product } from '~/models/menu'
 import ProductDetail from '~/components/ProductDetail'
 import { useMenuProvider } from '../../hooks/useMenuProvider'
+import Basket from './Basket'
 
 interface IMobileViewContext {
   step: number
@@ -30,6 +31,10 @@ const MobileView: React.FC = () => {
 
   const handleCloseProductDetail = () => {
     setProductSelected(null)
+    setStep(STEP_MOBILE_VIEW.INITIAL)
+  }
+
+  const handleCloseBasket = () => {
     setStep(STEP_MOBILE_VIEW.INITIAL)
   }
 
@@ -62,6 +67,9 @@ const MobileView: React.FC = () => {
             onClose={handleCloseProductDetail}
             onAddProduct={handleAddProduct}
           />
+        </StepWizard>
+        <StepWizard>
+          <Basket onClose={handleCloseBasket} />
         </StepWizard>
       </WrapperStepWizard>
     </MobileViewContext.Provider>

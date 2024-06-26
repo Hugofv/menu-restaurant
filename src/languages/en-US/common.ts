@@ -3,5 +3,7 @@ export default {
   signin: 'signin',
   contact: 'Contact',
   select: 'Select',
-  option: 'Option'
+  option: 'Option',
+  subTotal: 'Sub total',
+  total: 'Total'
 }
