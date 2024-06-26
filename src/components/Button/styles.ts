@@ -12,6 +12,7 @@ export const StyledButton = styled.button<IStyledButton>`
   border-radius: 20px;
 
   &:hover {
-    background-color: ${({ theme }) => theme.color?.primaryHover};
+    background-color: ${({ theme, disabled }) =>
+      disabled ? theme.color.secondary : theme.color?.primaryHover};
   }
 `

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import Paper from '~/components/Paper'
 
 export const Container = styled.main`
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;

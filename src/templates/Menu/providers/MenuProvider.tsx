@@ -3,6 +3,7 @@ import {
   ReactNode,
   SetStateAction,
   createContext,
+  useCallback,
   useMemo,
   useState
 } from 'react'
@@ -19,6 +20,7 @@ type IMenuContext = {
   setCurrentSection: Dispatch<SetStateAction<Section>>
   basket: Map<number, Product>
   setBasket: Dispatch<SetStateAction<Map<number, Product>>>
+  addProductOnBasket: (product: Product) => void
 }
 
 export const MenuContext = createContext<IMenuContext>({
@@ -29,7 +31,8 @@ export const MenuContext = createContext<IMenuContext>({
   query: '',
   setQuery: () => null,
   basket: new Map<number, Product>(),
-  setBasket: () => null
+  setBasket: () => null,
+  addProductOnBasket: () => null,
 })
 
 interface MenuProviderProps {
@@ -66,18 +69,29 @@ export const MenuProvider = ({ children }: MenuProviderProps) => {
     }
   }, [searchQuery])
 
+  const addProductOnBasket = useCallback(
+    (product: Product) => {
+      const newBasket = new Map(basket)
+
+      newBasket.set(product.id, product)
+      setBasket(newBasket)
+    },
+    [basket]
+  )
+
   const valueContext = useMemo(
     () => ({
       query,
       basket,
       setBasket,
       setQuery,
+      addProductOnBasket,
       menu: menuMock,
       menuFiltered,
       currentSection: currentSection,
       setCurrentSection: setCurrentSection
     }),
-    [basket, currentSection, menuFiltered, query]
+    [addProductOnBasket, basket, currentSection, menuFiltered, query]
   )
 
   return (

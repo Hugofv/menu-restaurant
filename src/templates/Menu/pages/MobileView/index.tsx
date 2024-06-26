@@ -27,7 +27,7 @@ export const MobileViewContext = createContext<IMobileViewContext>({
 const MobileView: React.FC = () => {
   const [step, setStep] = useState(STEP_MOBILE_VIEW.INITIAL)
   const [productSelected, setProductSelected] = useState<Product | null>()
-  const { basket, setBasket } = useMenuProvider()
+  const { addProductOnBasket } = useMenuProvider()
 
   const handleCloseProductDetail = () => {
     setProductSelected(null)
@@ -39,10 +39,7 @@ const MobileView: React.FC = () => {
   }
 
   const handleAddProduct = (product: Product) => {
-    const newBasket = new Map(basket)
-
-    newBasket.set(product.id, product)
-    setBasket(newBasket)
+    addProductOnBasket(product)
     handleCloseProductDetail()
   }
 
