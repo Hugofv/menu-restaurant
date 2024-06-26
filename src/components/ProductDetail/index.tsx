@@ -75,6 +75,16 @@ const ProductDetail: React.FC<IProductDetail> = ({
     return price * quantity
   }, [modifiersSelected, product?.price, quantity])
 
+  const addAvailable = useMemo(() => {
+    const minChoices =
+      product?.modifiers?.reduce(
+        (acc, modifier) => (acc += modifier.minChoices),
+        0
+      ) || 0
+
+    return minChoices <= modifiersSelected.length
+  }, [modifiersSelected.length, product?.modifiers])
+
   return (
     <Container>
       <WrapperImage>
@@ -119,9 +129,9 @@ const ProductDetail: React.FC<IProductDetail> = ({
       </WrapperBody>
 
       <WrapperAction>
-        <Counter value={quantity} setValue={setQuantity} />
-        <Button onClick={handleAddOnBasket}>
-          {t('menu.addToOrder')} - {formatMoney(totalAmount)}
+        <Counter minValue={1} value={quantity} setValue={setQuantity} />
+        <Button disabled={!addAvailable} onClick={handleAddOnBasket}>
+          {t('menu.addToOrder')} • {formatMoney(totalAmount)}
         </Button>
       </WrapperAction>
     </Container>

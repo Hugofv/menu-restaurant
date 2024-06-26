@@ -8,14 +8,26 @@ export const Container = styled.main`
   padding: 1rem;
 `
 
-export const WrapperCarousel = styled.div`
-  margin-top: 2rem;
+interface IWrapperCarousel {
+  isSticky: boolean
+}
+export const WrapperCarousel = styled.div<IWrapperCarousel>`
+  ${({ theme, isSticky }) =>
+    isSticky
+      ? `
+    position: sticky;
+    margin: 0;
+    top: 0;
+    padding-top: 2em;
+    z-index: 999;
+    background-color: ${theme.color.light}
+  `
+      : 'margin-top: 2rem;'};
 `
 
 export const WrapperSection = styled.div`
   overflow: auto;
   margin-top: 2rem;
-  max-height: calc(100vh - 36rem);
 `
 
 export const WrapperProducts = styled.div`
@@ -36,5 +48,20 @@ export const WrapperInfo = styled.div`
     background-color: ${({ theme }) => theme.color.light};
     width: 100%;
     padding: 5px;
+  }
+`
+
+export const WrapperBasketButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: sticky;
+  bottom: 1em;
+
+  button {
+    width: 80%;
   }
 `

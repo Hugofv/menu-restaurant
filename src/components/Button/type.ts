@@ -3,7 +3,8 @@ import { ThemeColors } from '~/styles/Theme/type'
 
 export interface IButton {
   children: ReactNode
-  onClick: () => void
+  disabled?: boolean
+  onClick?: () => void
   color?: keyof ThemeColors
 }
 

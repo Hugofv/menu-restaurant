@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FiSearch } from 'react-icons/fi'
 import Header from '~/components/Header'
 import Input from '~/components/Input'
 import {
   Container,
+  WrapperBasketButton,
   WrapperCarousel,
   WrapperInfo,
   WrapperProducts,
@@ -18,13 +19,37 @@ import Typography from '~/components/Typography'
 import { useMobileViewContext } from '../hooks/useMobileViewContext'
 import { Product } from '~/models/menu'
 import { STEP_MOBILE_VIEW } from '../constants'
+import Button from '~/components/Button'
 
 const InitialPage: React.FC = () => {
   const { t } = useTranslation()
-  const { menuFiltered, query, setQuery, currentSection, setCurrentSection } =
-    useMenuProvider()
+  const [carouselStick, setCarouselStick] = useState(false)
+  const {
+    menuFiltered,
+    basket,
+    query,
+    setQuery,
+    currentSection,
+    setCurrentSection
+  } = useMenuProvider()
   const { setProductSelected, setStep } = useMobileViewContext()
   const { sections } = menuFiltered
+
+  useEffect(() => {
+    window.addEventListener('scroll', isSticky)
+    return () => {
+      window.removeEventListener('scroll', isSticky)
+    }
+  })
+
+  const isSticky = () => {
+    const scrollTop = window.scrollY
+    if (scrollTop >= 250) {
+      setCarouselStick(true)
+    } else if (!carouselStick) {
+      setCarouselStick(false)
+    }
+  }
 
   const handleDetailProduct = (product: Product) => {
     setProductSelected(product)
@@ -43,7 +68,7 @@ const InitialPage: React.FC = () => {
           placeholder={t('menu.searchMenuItems')}
         />
 
-        <WrapperCarousel>
+        <WrapperCarousel isSticky={carouselStick}>
           <CarouselSection
             sections={sections}
             selected={currentSection}
@@ -60,6 +85,7 @@ const InitialPage: React.FC = () => {
                     onSelectProduct={() => handleDetailProduct(it)}
                     key={it.id}
                     product={it}
+                    quantity={basket.get(it.id)?.quantity}
                   />
                 ))}
               </WrapperProducts>
@@ -73,6 +99,16 @@ const InitialPage: React.FC = () => {
           {t('menu.viewAllergyInformation')}
         </Typography>
       </WrapperInfo>
+
+      {basket.size && (
+        <WrapperBasketButton>
+          <Button>
+            {t('menu.yourBasket')}
+            {' • '}
+            {basket.size} {t('menu.item').toLowerCase()}
+          </Button>
+        </WrapperBasketButton>
+      )}
     </>
   )
 }

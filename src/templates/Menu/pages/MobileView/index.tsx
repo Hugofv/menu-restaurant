@@ -34,8 +34,9 @@ const MobileView: React.FC = () => {
   }
 
   const handleAddProduct = (product: Product) => {
-    const newBasket = JSON.parse(JSON.stringify(basket))
-    newBasket.push(product)
+    const newBasket = new Map(basket)
+
+    newBasket.set(product.id, product)
     setBasket(newBasket)
     handleCloseProductDetail()
   }

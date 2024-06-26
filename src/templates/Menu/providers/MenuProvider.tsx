@@ -17,8 +17,8 @@ type IMenuContext = {
   setQuery: Dispatch<SetStateAction<string>>
   currentSection: Section
   setCurrentSection: Dispatch<SetStateAction<Section>>
-  basket: Product[]
-  setBasket: Dispatch<SetStateAction<Product[]>>
+  basket: Map<number, Product>
+  setBasket: Dispatch<SetStateAction<Map<number, Product>>>
 }
 
 export const MenuContext = createContext<IMenuContext>({
@@ -28,7 +28,7 @@ export const MenuContext = createContext<IMenuContext>({
   setCurrentSection: () => null,
   query: '',
   setQuery: () => null,
-  basket: [],
+  basket: new Map<number, Product>(),
   setBasket: () => null
 })
 
@@ -41,7 +41,10 @@ export const MenuProvider = ({ children }: MenuProviderProps) => {
   const [currentSection, setCurrentSection] = useState<Section>(
     menuMock.sections[0]
   )
-  const [basket, setBasket] = useState<Product[]>([])
+
+  const [basket, setBasket] = useState<Map<number, Product>>(
+    new Map<number, Product>()
+  )
 
   const searchQuery = useDebounce(query, 300)
 

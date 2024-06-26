@@ -11,29 +11,24 @@ interface IItemProps {
 
 const Item: React.FC<IItemProps> = ({ active, section, onChangeSection }) => {
   useEffect(() => {
-    const parentSection = document.querySelector('#WrapperSection')
     const checkSectinIsVisible = () => {
       const sectionElement = document.querySelector(`#${section.name}`)
       const positionSection = sectionElement?.getBoundingClientRect()
-      const containerRect = parentSection?.getBoundingClientRect()
 
       if (
         positionSection &&
-        containerRect &&
-        positionSection.top >= containerRect.top &&
-        positionSection.bottom <= containerRect.bottom + 100
+        positionSection.top >= 200 &&
+        positionSection.bottom <=
+          (window.innerHeight || document.documentElement.clientHeight)
       ) {
         onChangeSection?.(section)
         return
       }
     }
 
-    if (parentSection) {
-      parentSection.addEventListener('scroll', checkSectinIsVisible)
+    window.addEventListener('scroll', checkSectinIsVisible)
 
-      return () =>
-        parentSection.removeEventListener('scroll', checkSectinIsVisible)
-    }
+    return () => window.removeEventListener('scroll', checkSectinIsVisible)
   }, [onChangeSection, section])
 
   return (

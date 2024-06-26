@@ -42,6 +42,10 @@ const styleMapping = {
     font-size: 16px;
     font-weight: 300;
   `,
+  caption1: `
+    font-size: 14px;
+    font-weight: 500;
+  `,
   link: `
     font-size: 16px;
     font-weight: 700;

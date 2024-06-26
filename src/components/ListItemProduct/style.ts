@@ -25,3 +25,21 @@ export const WrapperImage = styled.div`
     height: 5rem;
   }
 `
+
+export const BoxTitle = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.3rem;
+  gap: 5px;
+`
+
+export const Badge = styled.div`
+  background-color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.textColor.light};
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`

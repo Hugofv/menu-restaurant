@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import { IStyledButton } from './type'
 
 export const StyledButton = styled.button<IStyledButton>`
-  background-color: ${({ theme, color }) => theme.color?.[color || 'primary']};
+  background-color: ${({ theme, disabled, color }) =>
+    disabled ? theme.color.secondary : theme.color?.[color || 'primary']};
   cursor: pointer;
   border: none;
   outline: none;

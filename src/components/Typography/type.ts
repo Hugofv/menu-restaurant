@@ -12,6 +12,7 @@ export type TypographyVariant =
   | 'span'
   | 'body1'
   | 'body2'
+  | 'caption1'
   | 'link'
 
 export type ComponentVariant =
@@ -36,6 +37,7 @@ export const VariantMapping = {
   span: 'span',
   body1: 'span',
   body2: 'span',
+  caption1: 'span',
   link: 'a'
 }
 
