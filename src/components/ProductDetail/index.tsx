@@ -86,7 +86,7 @@ const ProductDetail: React.FC<IProductDetail> = ({
   }, [modifiersSelected.length, product?.modifiers])
 
   return (
-    <Container>
+    <Container data-testid='ProductDetail'>
       <WrapperImage>
         {product?.images?.[0]?.image ? (
           <img src={product?.images?.[0]?.image} />

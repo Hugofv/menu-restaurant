@@ -23,7 +23,7 @@ const ListItemProduct: React.FC<IListItemProductProps> = ({
   onSelectProduct
 }) => {
   return (
-    <Wrapper onClick={onSelectProduct}>
+    <Wrapper onClick={onSelectProduct} data-testid='WrapperListItemProduct'>
       <WrapperInfo>
         <BoxTitle>
           {quantity && (

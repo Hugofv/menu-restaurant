@@ -14,7 +14,7 @@ const ListItemText: React.FC<IListItemText> = ({
   info
 }) => {
   return (
-    <Wrapper>
+    <Wrapper data-testid='WrapperListItemText'>
       <WrapperText>
         <Typography variant='body1'>{primary}</Typography>
         <Typography variant='body2'>{secondary}</Typography>

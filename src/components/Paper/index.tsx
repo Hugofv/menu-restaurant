@@ -6,7 +6,11 @@ export interface IPaper {
 }
 
 const Paper: React.FC<IPaper> = ({ children, ...props }) => {
-  return <Wrapper {...props}>{children}</Wrapper>
+  return (
+    <Wrapper data-testid='WrapperPaper' {...props}>
+      {children}
+    </Wrapper>
+  )
 }
 
 export default Paper

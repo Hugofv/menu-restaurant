@@ -16,12 +16,17 @@ const ListItemOption: React.FC<IListItemOption> = ({
   onChange
 }) => {
   return (
-    <Wrapper>
+    <Wrapper data-testid='WrapperListItemOption'>
       <WrapperText>
         <Typography variant='body1'>{primary}</Typography>
         <Typography variant='body2'>{secondary}</Typography>
       </WrapperText>
-      <StyledRadio checked={checked} onChange={onChange} type='checkbox' />
+      <StyledRadio
+        data-testid={`StyledRadio-${primary}`}
+        checked={checked}
+        onChange={onChange}
+        type='checkbox'
+      />
     </Wrapper>
   )
 }

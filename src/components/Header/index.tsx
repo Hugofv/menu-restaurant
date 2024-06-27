@@ -9,7 +9,10 @@ const Header: React.FC = () => {
   return (
     <>
       <NavBar />
-      <Container image={company?.webSettings?.bannerImage || ''} />
+      <Container
+        data-testid='HeaderContainer'
+        image={company?.webSettings?.bannerImage || ''}
+      />
     </>
   )
 }

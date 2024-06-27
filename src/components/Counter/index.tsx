@@ -47,7 +47,7 @@ const Counter: React.FC<ICounter> = ({
   }, [minValue, value])
 
   return (
-    <Wrapper style={{ gap: elementsSize[size].gap }}>
+    <Wrapper data-testid='WrapperCounter' style={{ gap: elementsSize[size].gap }}>
       <RoundedButton
         disabled={checkMinValueAvailable}
         size={elementsSize[size].button}
