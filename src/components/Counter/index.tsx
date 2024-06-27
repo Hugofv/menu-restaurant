@@ -52,13 +52,18 @@ const Counter: React.FC<ICounter> = ({
         disabled={checkMinValueAvailable}
         size={elementsSize[size].button}
         onClick={handleMinus}
+        data-testid='ButtonMinus'
       >
         <FaMinus size={elementsSize[size].icon} color={theme.color.light} />
       </RoundedButton>
       <Typography fontSize={elementsSize[size].text} variant='h1'>
         {value}
       </Typography>
-      <RoundedButton size={elementsSize[size].button} onClick={handlePlus}>
+      <RoundedButton
+        size={elementsSize[size].button}
+        onClick={handlePlus}
+        data-testid='ButtonPlus'
+      >
         <FaPlus size={elementsSize[size].icon} color={theme.color.light} />
       </RoundedButton>
     </Wrapper>

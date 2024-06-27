@@ -15,7 +15,9 @@ const Collapse: React.FC<ICollapseProps> = ({
   children
 }) => {
   const [contentHeight, setContentHeight] = useState('0rem')
-  const [open, setOpen] = useState(defaultOpen)
+  const [open, setOpen] = useState(
+    defaultOpen === undefined ? false : defaultOpen
+  )
   const contentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -38,6 +40,7 @@ const Collapse: React.FC<ICollapseProps> = ({
       </Header>
 
       <WrapperContent
+        data-testid='WrapperContent'
         style={{
           maxHeight: open ? contentHeight : 0
         }}

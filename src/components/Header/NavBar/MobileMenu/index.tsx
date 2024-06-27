@@ -38,7 +38,7 @@ const MobileMenu: React.FC = () => {
           </BoxMenu>
         }
       >
-        <WrapperIcon onClick={handleToggleMenu}>
+        <WrapperIcon onClick={handleToggleMenu} data-testid='MenuIcon'>
           <FaBars size='1.5rem' color={theme.textColor.light} />
         </WrapperIcon>
       </Popover>

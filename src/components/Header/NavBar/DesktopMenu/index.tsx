@@ -8,10 +8,14 @@ const DesktopMenu: React.FC = () => {
   const { current, routes } = useRouteProvider()
 
   return (
-    <Wrapper>
+    <Wrapper data-testid='WrapperDesktopMenu'>
       <BoxMenu>
         {routes.map((route) => (
-          <MenuItem active={current?.path === route.path} key={route.path}>
+          <MenuItem
+            data-testid={`Menu-${route.title}`}
+            active={current?.path === route.path}
+            key={route.path}
+          >
             <Link to={route.path}>
               <Typography variant='h5' color='light'>
                 {route.title}

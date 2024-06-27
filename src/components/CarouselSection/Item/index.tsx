@@ -36,7 +36,7 @@ const Item: React.FC<IItemProps> = ({ active, section, onChangeSection }) => {
       href={`#${section.name}`}
       onClick={() => onChangeSection?.(section)}
     >
-      <WrapperAvatar active={active}>
+      <WrapperAvatar data-testid={`item-${section.id}`} active={active}>
         <Avatar active={active} image={section?.images?.[0]?.image || ''} />
         <Typography variant='body1'>{section?.name}</Typography>
       </WrapperAvatar>

@@ -24,7 +24,7 @@ const CarouselSection: React.FC<ICarouselSectionProps> = ({
   }
 
   return (
-    <Container>
+    <Container data-testid='CarouseSectionContainer'>
       {sections?.map((sec) => (
         <Item
           key={sec.id}
