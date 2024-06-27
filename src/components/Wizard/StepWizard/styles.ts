@@ -1,5 +1,5 @@
 import styled from 'styled-components'
 
-export const StepTrackerRoot = styled.div`
+export const StepWizardRoot = styled.div`
   height: 100%;
 `

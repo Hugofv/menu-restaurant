@@ -1,16 +1,16 @@
 import React, { ReactElement } from 'react'
-import { StepTrackerRoot } from './styles'
+import { StepWizardRoot } from './styles'
 import ComponentTransition from '~/components/ComponentTransition'
 import { useWizard } from '../useWizard'
 
-interface StepTrackerProps {
+interface StepWizardProps {
   activeStep?: number
   active?: boolean
   children: ReactElement
   index?: number
 }
 
-const StepTracker: React.FC<StepTrackerProps> = (props) => {
+const StepWizard: React.FC<StepWizardProps> = (props) => {
   const { active: activeProp, children, index, ...other } = props
 
   const { activeStep } = useWizard()
@@ -36,9 +36,9 @@ const StepTracker: React.FC<StepTrackerProps> = (props) => {
         display: active ? 'block' : 'none'
       }}
     >
-      {active ? <StepTrackerRoot {...other}>{step}</StepTrackerRoot> : null}
+      {active ? <StepWizardRoot {...other}>{step}</StepWizardRoot> : null}
     </ComponentTransition>
   )
 }
 
-export default StepTracker
+export default StepWizard
