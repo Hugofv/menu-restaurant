@@ -5,7 +5,7 @@ import Typography from '../Typography'
 
 const Button: React.FC<IButton> = ({ children, disabled, onClick }) => {
   return (
-    <StyledButton disabled={disabled} onClick={onClick}>
+    <StyledButton data-testid='Button' disabled={disabled} onClick={onClick}>
       <Typography variant='h3' color={disabled ? 'primary' : 'light'}>
         {children}
       </Typography>

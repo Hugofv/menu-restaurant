@@ -26,13 +26,13 @@ type IMenuContext = {
 export const MenuContext = createContext<IMenuContext>({
   menu: menuMock,
   menuFiltered: menuMock,
-  currentSection: menuMock.sections[0],
+  currentSection: menuMock?.sections?.[0],
   setCurrentSection: () => null,
   query: '',
   setQuery: () => null,
   basket: new Map<number, Product>(),
   setBasket: () => null,
-  addProductOnBasket: () => null,
+  addProductOnBasket: () => null
 })
 
 interface MenuProviderProps {

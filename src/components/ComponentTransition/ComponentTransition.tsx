@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React from 'react'
+import React, { CSSProperties } from 'react'
 import { Transition, TransitionGroup } from 'react-transition-group'
 
 interface IComponentTransition {
@@ -19,22 +19,24 @@ const ComponentTransition: React.FC<IComponentTransition> = ({
   groupStyle,
   style
 }) => {
+  type TransitionOption = 'entering' | 'entered' | 'exiting'
+
   const transitionStyles = {
     entering: {
       position: 'absolute',
       opacity: 0,
       transform: `translateX(${offset})`
-    },
+    } as CSSProperties,
     entered: {
       transition: `opacity ${timeout}ms ease-in-out, transform ${timeout}ms ease-in-out`,
       opacity: 1,
       transform: 'translateX(0px)'
-    },
+    } as CSSProperties,
     exiting: {
       transition: `opacity ${timeout}ms ease-in-out, transform ${timeout}ms ease-in-out`,
       opacity: 0,
       transform: `translateX(-${offset})`
-    }
+    } as CSSProperties
   }
 
   return (
@@ -46,10 +48,10 @@ const ComponentTransition: React.FC<IComponentTransition> = ({
           exit: timeout
         }}
       >
-        {(status) => (
+        {/* @ts-ignore */}
+        {(status: TransitionOption) => (
           <div
             style={{
-              // @ts-ignore
               ...transitionStyles[status],
               ...style
             }}

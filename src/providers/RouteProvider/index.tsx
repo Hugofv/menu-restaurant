@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo } from 'react'
+import { ReactNode, createContext, useMemo } from 'react'
 import Menu from '~/templates/Menu'
 import { useTranslation } from 'react-i18next'
 
@@ -15,7 +15,7 @@ type IRouteValue = {
   findRoute: (_routes: Route[], path: string) => Route | undefined | null
 }
 
-export const RouteContext = React.createContext<IRouteValue>({
+export const RouteContext = createContext<IRouteValue>({
   routes: [],
   current: null,
   findRoute: () => null

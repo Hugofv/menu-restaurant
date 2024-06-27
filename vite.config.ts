@@ -22,6 +22,14 @@ export default async ({ mode }) => {
     build: {
       sourcemap: true
     },
-    plugins
+    plugins,
+    test: {
+      environment: 'jsdom',
+      globals: true,
+      watch: false,
+      testTimeout: 2000,
+      clearMocks: true,
+      maxConcurrency: 50
+    }
   })
 }

@@ -20,8 +20,10 @@ const WrapperStepWizard: React.FC<WrapperStepTrackerProps> = (
 
   const childrenArray = React.Children.toArray(children).filter(Boolean)
   const steps = childrenArray.map((step, index) => {
+    // @ts-ignore
     return React.cloneElement(step, {
       index,
+      // @ts-ignore
       ...step.props
     })
   })

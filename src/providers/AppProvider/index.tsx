@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import { createContext, useEffect, useMemo, useState } from 'react'
 import { DefaultTheme } from 'styled-components'
 import Theme from '~/styles/Theme'
 import { defaultTheme } from '~/styles/Theme/defaultTheme'
@@ -11,7 +11,7 @@ type IAppValue = {
   company: CompanyModel
 }
 
-export const AppContext = React.createContext<IAppValue>({
+export const AppContext = createContext<IAppValue>({
   theme: defaultTheme,
   company: companyMock
 })
