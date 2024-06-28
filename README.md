@@ -1,30 +1,39 @@
-# React + TypeScript + Vite
+# Restaurant Menu React Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This challenge consists of building a React application that presents restaurant data and its menu. Users should be able to visualize menu items and build a basket. The application is developed using ReactJS, TypeScript, Vite, and NodeJS v21.4.0.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **ReactJS**: A JavaScript library for building user interfaces.
+- **TypeScript**: A statically typed superset of JavaScript.
+- **Vite**: A fast build tool for modern web projects.
+- **NodeJS v21.4.0**: A JavaScript runtime for building server-side applications.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Libraries Utilized
 
-- Configure the top-level `parserOptions` property like this:
+- **i18next**: For internationalization of text.
+- **react-icons**: For icons.
+- **react-responsive-modal**: For using modals.
+- **react-tiny-popover**: For using popovers.
+- **react-transition-group**: For transitions on mobile pages.
+- **styled-components**: For styling the project.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Demo
+You can view a live demo of the application  [click here](https://667e1ecd5561428e0f69a16d--incredible-daffodil-4c4ad6.netlify.app/).
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Features
+- **View restaurant details and menu items.**
+- **Add menu items to the basket.**
+- **Internationalized text using i18next.**
+- **Styled components for a consistent and maintainable UI.**
+- **Responsive design with modals and popovers for a better user experience.**
+
+## Features
+- `yarn install`: Install dependencies.
+- `yarn dev`: Run the project locally.
+- `yarn build`: Build the project for production.
+
+
+For any inquiries or issues, please reach out via the contact form on the demo page.
