@@ -1,9 +1,8 @@
-import { sentryVitePlugin } from '@sentry/vite-plugin'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 import { defineConfig, loadEnv, splitVendorChunkPlugin } from 'vite'
 
-export default async ({ mode }) => {
+export default async ({ mode }: { mode: string }) => {
   process.env = { ...loadEnv(mode, process.cwd()), ...process.env }
 
   const plugins = [
@@ -11,7 +10,9 @@ export default async ({ mode }) => {
     splitVendorChunkPlugin()
   ]
 
+  // @ts-ignore
   return defineConfig({
+    // @ts-ignore
     server: { port: process.env.VITE_PUBLIC_PORT },
     resolve: {
       alias: {

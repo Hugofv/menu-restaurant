@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { useRouteProvider } from '~/hooks/useRouteProvider'
 import { BoxMenu, Wrapper, WrapperIcon } from './styles'
 import Typography from '~/components/Typography'
@@ -16,6 +16,10 @@ const MobileMenu: React.FC = () => {
     setOpenMenu(!openMenu)
   }
 
+  const routesToShow = useMemo(
+    () => routes?.filter((route) => route.showMenu),
+    [routes]
+  )
   return (
     <Wrapper>
       <Typography variant='h3' color='light'>
@@ -28,7 +32,7 @@ const MobileMenu: React.FC = () => {
         positions={['left', 'bottom', 'top', 'right']}
         content={
           <BoxMenu>
-            {routes.map((route) => (
+            {routesToShow.map((route) => (
               <li key={route.path}>
                 <Link to={route.path}>
                   <Typography>{route.title}</Typography>

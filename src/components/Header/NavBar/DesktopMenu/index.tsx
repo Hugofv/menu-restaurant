@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { BoxMenu, MenuItem, Wrapper } from './styles'
 import { useRouteProvider } from '~/hooks/useRouteProvider'
 import { Link } from 'react-router-dom'
@@ -7,10 +7,15 @@ import Typography from '~/components/Typography'
 const DesktopMenu: React.FC = () => {
   const { current, routes } = useRouteProvider()
 
+  const routesToShow = useMemo(
+    () => routes?.filter((route) => route.showMenu),
+    [routes]
+  )
+
   return (
     <Wrapper data-testid='WrapperDesktopMenu'>
       <BoxMenu>
-        {routes.map((route) => (
+        {routesToShow.map((route) => (
           <MenuItem
             data-testid={`Menu-${route.title}`}
             active={current?.path === route.path}

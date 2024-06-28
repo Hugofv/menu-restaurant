@@ -8,6 +8,7 @@ type Route = {
   path: string
   title: string
   element: ReactNode
+  showMenu: boolean
 }
 
 type IRouteValue = {
@@ -35,22 +36,26 @@ const RouteProvider: React.FC<IRouteProvider> = ({ children }) => {
       {
         element: <Menu />,
         path: '/',
-        title: t('common.menu')
+        title: t('common.menu'),
+        showMenu: true,
       },
       {
         element: <NotImplemented />,
         path: '/signin',
-        title: t('common.signin')
+        title: t('common.signin'),
+        showMenu: true,
       },
       {
         element: <NotImplemented />,
         path: '/contact',
-        title: t('common.contact')
+        title: t('common.contact'),
+        showMenu: true,
       },
       {
         element: <NotFound />,
         path: '*',
-        title: t('common.notFound')
+        title: t('common.notFound'),
+        showMenu: false,
       }
     ]
   }, [t])
