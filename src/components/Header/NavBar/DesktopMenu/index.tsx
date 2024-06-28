@@ -5,12 +5,15 @@ import { Link } from 'react-router-dom'
 import Typography from '~/components/Typography'
 
 const DesktopMenu: React.FC = () => {
-  const { current, routes } = useRouteProvider()
+  const { findRoute, routes } = useRouteProvider()
+  const pathname = window.location.pathname
 
   const routesToShow = useMemo(
     () => routes?.filter((route) => route.showMenu),
     [routes]
   )
+
+  const current = findRoute(routes, pathname)
 
   return (
     <Wrapper data-testid='WrapperDesktopMenu'>
