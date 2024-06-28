@@ -93,7 +93,7 @@ const ProductDetail: React.FC<IProductDetail> = ({
         ) : (
           <FiImage size='15rem' />
         )}
-        <WrapperIconClose onClick={onClose}>
+        <WrapperIconClose data-testid='IconClose' onClick={onClose}>
           <FiX size='1.5rem' />
         </WrapperIconClose>
       </WrapperImage>
@@ -130,7 +130,7 @@ const ProductDetail: React.FC<IProductDetail> = ({
 
       <WrapperAction>
         <Counter minValue={1} value={quantity} setValue={setQuantity} />
-        <Button disabled={!addAvailable} onClick={handleAddOnBasket}>
+        <Button disabled={!addAvailable} data-testid='AddToOrder' onClick={handleAddOnBasket}>
           {t('menu.addToOrder')} • {formatMoney(totalAmount)}
         </Button>
       </WrapperAction>

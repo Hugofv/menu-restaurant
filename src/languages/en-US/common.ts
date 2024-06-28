@@ -5,5 +5,7 @@ export default {
   select: 'Select',
   option: 'Option',
   subTotal: 'Sub total',
-  total: 'Total'
+  total: 'Total',
+  notImplemented: 'Not implemented',
+  notFound: 'Not found',
 }

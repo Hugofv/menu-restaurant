@@ -1,12 +1,13 @@
 import { ReactNode, createContext, useMemo } from 'react'
 import Menu from '~/templates/Menu'
 import { useTranslation } from 'react-i18next'
+import NotImplemented from '~/templates/NotImplemented'
+import NotFound from '~/templates/NotFound'
 
 type Route = {
   path: string
   title: string
   element: ReactNode
-  errorElement: ReactNode
 }
 
 type IRouteValue = {
@@ -33,21 +34,23 @@ const RouteProvider: React.FC<IRouteProvider> = ({ children }) => {
     return [
       {
         element: <Menu />,
-        errorElement: null,
         path: '/',
         title: t('common.menu')
       },
       {
-        element: null,
-        errorElement: null,
+        element: <NotImplemented />,
         path: '/signin',
         title: t('common.signin')
       },
       {
-        element: null,
-        errorElement: null,
+        element: <NotImplemented />,
         path: '/contact',
         title: t('common.contact')
+      },
+      {
+        element: <NotFound />,
+        path: '*',
+        title: t('common.notFound')
       }
     ]
   }, [t])

@@ -42,7 +42,7 @@ describe('ListItemProduct Component', () => {
       />
     )
 
-    const productWrapper = screen.getByTestId('WrapperListItemProduct')
+    const productWrapper = screen.getByTestId(`ItemProduct-${mockProduct.id}`)
     fireEvent.click(productWrapper)
 
     expect(handleSelectProduct).toHaveBeenCalled()

@@ -17,7 +17,7 @@ const Basket: React.FC = () => {
   }
 
   return (
-    <WrapperBasket>
+    <WrapperBasket data-testid='Basket'>
       <Container>
         <HeaderTitle>
           <Typography variant='h1'>{t('menu.basket')}</Typography>

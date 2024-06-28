@@ -16,7 +16,7 @@ const ListSectionProducts: React.FC<ListSectionProducts> = ({
   handleDetailProduct
 }) => {
   return (
-    <WrapperSection id='WrapperSection'>
+    <WrapperSection data-testid='ListSectionProducts' id='WrapperSection'>
       {sections?.map((sec) => (
         <Collapse title={sec.name}>
           <WrapperProducts>

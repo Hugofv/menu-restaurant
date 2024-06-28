@@ -53,7 +53,7 @@ const DetailBasket: React.FC<IDetailBasket> = ({ basket, setBasket }) => {
 
   return (
     <>
-      <Paper>
+      <Paper data-testid='DetailBasket'>
         <WrapperItems>
           {items?.map((item) => (
             <BoxItem>
